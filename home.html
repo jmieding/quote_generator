@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Quote Generator</title>
+    
     <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!--JQuery????<script type="text/javascript" src="script.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <style>
+    
+    body {background-color: rgb(240,240,240)}
 
+    div p {
+      font-family: ;
+      font-size: 4em;
+      text-align: center;
+    }
+
+    #quotes {
+      border: solid red 5px;
+      width: 50%;
+      margin: auto;
+    }
+
+    .btn-lg {
+      width: 25%;
+      height: 70px;
+      margin-left: auto;
+    }
     </style>
+
   </head>
 
 <body>
-Hello World!
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="border:solid green 2px">
+      <p>Random Quote Generator</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="border: 1px solid blue">
+      <button type="button" class="btn btn-lg btn-primary">New Quote</button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div id="quotes">
+        <p>Quotes Populate here</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
