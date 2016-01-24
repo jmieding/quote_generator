@@ -1,60 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <title>Quote Generator</title>
     
-    <script type="text/javascript" src="script.js"></script>
+    <!--Bootstrap-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!--JQuery????<script type="text/javascript" src="script.js"></script>-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!--Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     
+    <!--CSS-->
     <style>
-    
-    body {background-color: rgb(240,240,240)}
 
-    div p {
-      font-family: monospace;
-      font-size: 4em;
-      text-align: center;
-    }
+    #title {font-family: EB Garamond;font-size: 3.5em;text-align: center}
 
     #quotes {
-      border: solid red 5px;
+      background-color: rgba(255,255,255,0.4);
+      border: solid black 2px;
+      box-shadow: 0 1px 2px 0;
+      border-radius: 10px;
       width: 50%;
       margin: auto;
+      font-size: .5em;
+      font-family: EB Garamond;
     }
 
+    #quotes p {font-size: 3.5em;padding: 0 5%;text-align: center}
+
+    #author {font-style: italic;font-family: Dancing Script}
+
     .btn-lg {
-      width: 25%;
+      width: 200px;
       height: 70px;
-      margin: 0 auto;
+      border-radius: 10px;
+      border-color: gray;
+      box-shadow: 2px 2px 3px 0 black;
+      background: linear-gradient(tan, rgb(155, 113, 88));
+      font-size: 1.25em;
+      font-family: EB Garamond;
+    }
+
+    .btn-lg:active {
+      color: black;
+      box-shadow: none;
+      border-top-color: black;
+      border-left-color: black;
     }
     </style>
 
   </head>
 
-<body>
+<body background="ocean.jpg">
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3" style="border:solid green 2px">
-      <p>Random Quote Generator</p>
-    </div>
+  <div class="row" style="margin-bottom:50px">
+    <p id="title">Random Quote Generator</p>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3" style="border: 1px solid blue">
-      <button type="button" class="btn btn-lg btn-primary">New Quote</button>
-    </div>
+  <div class="row" style="text-align:center; margin-bottom: 50px">
+    <button type="button" class="btn btn-lg btn-primary" style="font-family:">New Quote</button>
   </div>
   
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div id="quotes">
-        <p>Quotes Populate here</p>
-      </div>
-    </div>
+  <div class="row" id="quotes">
+    <p id="quote">There are no gains without pains.</p>
+    <p id="author">Benjamin Franklin</p>
   </div>
+
+<script>
+$(document).ready(function() {
+  var quotes = {
+    1 : ["Anyone who stops learning is old, whether at twenty or eighty. Anyone who keeps learning stays young. The greatest thing in life is to keep your mind young.", "Henry Ford"],
+    
+    2 : ["Half the harm that is done in this world is due to people who want to feel important. They don't mean to do harm; but the harm does not interest them. Or they do not see it, or they justify it because they are absorbed in the endless struggle to think well of themselves.", "T. S. Eliot"],
+    
+    3 : ["However beautiful the strategy, you should occasionally look at the results.", "Winston Churchill"],
+    
+    4 : ["Talent is God-given. Be humble. Fame is man-given. Be grateful. Conceit is self-given. Be careful.", "John Wooden"],
+    
+    5 : ["Think well to the end, consider the end first.", "Leonardo DaVinci"],
+    
+    6 : ["If we all worked on the assumption that what is accepted as true is really true, there would be little hope of advance.", "Orville Wright"],
+    
+    7 : ['Maybe fear is God\'s way of saying, "Pay attention, this could be fun."',"Craig Ferguson"],
+    
+    8 : ["Me, me, me is dull, dull, dull.", "The Millionaire Mind"],
+    
+    9 : ["In all labor there is profit, but mere talk leads only to poverty.", "The Bible"],
+    
+    10 : ["There is little success where there is little laughter.", "Andrew Carnegie"],
+    
+    11 : ["It is a mistake to think that the practice of my art has become easy to me. I assure you, dear friend, no one has given so much care to the study of composition as I. There is scarcely a famous master in music whose works I have not frequently and diligently studied.", "Wolfgang Mozart"],
+    
+    12 : ["Wisdom is the reward you get for a lifetime of listening when you'd have perferred to talk.", "Doug Larson"],
+    
+    13 : ["I walk slowly, but I never walk backward.", "Abraham Lincoln"],
+    
+    14 : ["We know that in tough times cynicism is just another way to give up, and in the military we consider cynicism or giving up to be a form of cowardice.", "Gen. James Mattis, Ret. USMC"],
+    
+    15 : ["If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month.", "Teddy Roosevelt"]
+  };
+  $("button").click(function() {
+    var randomNum = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+    $("#quote").text(quotes[randomNum][0]);
+    $("#author").text(quotes[randomNum][1]);
+  });
+});
+</script>
 
 </body>
 
