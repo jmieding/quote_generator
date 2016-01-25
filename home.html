@@ -34,7 +34,7 @@
       font-family: EB Garamond;
     }
 
-    #quotes p {
+    #quotes #author, #quotes #quote {
       font-size: 2em;
       padding: 5% 5% 0% 5%;
       text-align: center;
@@ -45,7 +45,6 @@
     #author {
       font-style: italic;
       font-family: Dancing Script;
-      margin-bottom:5%;
     }
 
     .btn-lg {
@@ -73,6 +72,11 @@
       background: linear-gradient(tan, rgb(155, 113, 88));
     }
 
+    #twitter {
+      text-align: center;
+      margin: 0 auto;
+    }
+
     </style>
 
   </head>
@@ -84,54 +88,75 @@
   </div>
 
   <div class="row" style="text-align:center; margin-bottom: 50px">
-    <button type="button" class="btn btn-lg" style="font-family:">New Quote</button>
+    <button type="button" class="btn btn-lg">New Quote</button>
   </div>
   
   <div class="row" id="quotes">
-    <p id="quote">There are no gains without pains.</p>
-    <p id="author">Benjamin Franklin</p>
+    <p id="quote">Text</p>
+    <p id="author">Text</p>
+    <p id="twitter">
+      <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="" id="twitter">Tweet</a> 
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </p>
   </div>
 
-<script>
-$(document).ready(function() {
-  var quotes = {
-    1 : ["Anyone who stops learning is old, whether at twenty or eighty. Anyone who keeps learning stays young. The greatest thing in life is to keep your mind young.", "Henry Ford"],
-    
-    2 : ["Half the harm that is done in this world is due to people who want to feel important. They don't mean to do harm; but the harm does not interest them. Or they do not see it, or they justify it because they are absorbed in the endless struggle to think well of themselves.", "T. S. Eliot"],
-    
-    3 : ["However beautiful the strategy, you should occasionally look at the results.", "Winston Churchill"],
-    
-    4 : ["Talent is God-given. Be humble. Fame is man-given. Be grateful. Conceit is self-given. Be careful.", "John Wooden"],
-    
-    5 : ["Think well to the end, consider the end first.", "Leonardo DaVinci"],
-    
-    6 : ["If we all worked on the assumption that what is accepted as true is really true, there would be little hope of advance.", "Orville Wright"],
-    
-    7 : ['Maybe fear is God\'s way of saying, "Pay attention, this could be fun."',"Craig Ferguson"],
-    
-    8 : ["Me, me, me is dull, dull, dull.", "The Millionaire Mind"],
-    
-    9 : ["In all labor there is profit, but mere talk leads only to poverty.", "The Bible"],
-    
-    10 : ["There is little success where there is little laughter.", "Andrew Carnegie"],
-    
-    11 : ["It is a mistake to think that the practice of my art has become easy to me. I assure you, dear friend, no one has given so much care to the study of composition as I. There is scarcely a famous master in music whose works I have not frequently and diligently studied.", "Wolfgang Mozart"],
-    
-    12 : ["Wisdom is the reward you get for a lifetime of listening when you'd have perferred to talk.", "Doug Larson"],
-    
-    13 : ["I walk slowly, but I never walk backward.", "Abraham Lincoln"],
-    
-    14 : ["We know that in tough times cynicism is just another way to give up, and in the military we consider cynicism or giving up to be a form of cowardice.", "Gen. James Mattis, Ret. USMC"],
-    
-    15 : ["If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month.", "Teddy Roosevelt"]
-  };
-  $("button").click(function() {
-    var randomNum = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
-    $("#quote").text(quotes[randomNum][0]);
-    $("#author").text(quotes[randomNum][1]);
-  });
-});
-</script>
+  <script>
+    $(document).ready(function() {
+      var quotes = {
+        1 : ["Anyone who stops learning is old, whether at twenty or eighty. Anyone who keeps learning stays young.", "Henry Ford"],
+        
+        2 : ["Half the harm that is done in this world is due to people who want to feel important.", "T. S. Eliot"],
+        
+        3 : ["However beautiful the strategy, you should occasionally look at the results.", "Winston Churchill"],
+        
+        4 : ["Talent is God-given. Be humble. Fame is man-given. Be grateful. Conceit is self-given. Be careful.", "John Wooden"],
+        
+        5 : ["Think well to the end, consider the end first.", "Leonardo DaVinci"],
+        
+        6 : ["If we all worked on the assumption that what is accepted as true is really true, there would be little hope of advance.", "Orville Wright"],
+        
+        7 : ['Maybe fear is God\'s way of saying, "Pay attention, this could be fun."',"Craig Ferguson"],
+        
+        8 : ["Me, me, me is dull, dull, dull.", "The Millionaire Mind"],
+        
+        9 : ["In all labor there is profit, but mere talk leads only to poverty.", "The Bible"],
+        
+        10 : ["There is little success where there is little laughter.", "Andrew Carnegie"],
+        
+        11 : ["It is a mistake to think that the practice of my art has become easy to me...no one has given so much care to the study of composition as I.", "Wolfgang Mozart"],
+        
+        12 : ["Wisdom is the reward you get for a lifetime of listening when you'd have perferred to talk.", "Doug Larson"],
+        
+        13 : ["I walk slowly, but I never walk backward.", "Abraham Lincoln"],
+        
+        14 : ["In tough times cynicism is just another way to give up.", "Gen. James Mattis, Ret. USMC"],
+        
+        15 : ["If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month.", "Teddy Roosevelt"]
+      };
+
+      var randomNum = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+      $("#quote").text(quotes[randomNum][0]);
+      $("#author").text(quotes[randomNum][1]);
+
+      $("button").click(function() {
+        var randomNum = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+        $("#quote").text(quotes[randomNum][0]);
+        $("#author").text(quotes[randomNum][1]);
+        var combined = quotes[randomNum][0] + " " + quotes[randomNum][1];
+
+        function twitterReset () {
+          $('#quotes iframe').remove();
+          var newTweetBtn = $('<a></a>')
+            .addClass('twitter-share-button')
+            .attr('href', 'http://twitter.com/share')
+            .attr('data-text', combined);
+          $('#twitter').append(newTweetBtn);
+          twttr.widgets.load();
+        }
+        twitterReset();
+      });
+    });
+    </script>
 
 </body>
 
