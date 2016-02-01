@@ -17,7 +17,7 @@ $(document).ready(function() {
     
     8 : ["Me, me, me is dull, dull, dull.", "The Millionaire Mind"],
     
-    9 : ["In all labor there is profit, but mere talk leads only to poverty.", "The Bible"],
+    9 : ["In all labor there is profit, but mere talk leads only to poverty.", "Proverb"],
     
     10 : ["There is little success where there is little laughter.", "Andrew Carnegie"],
     
